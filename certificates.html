@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certificates | Rohit Hadlageri</title>
+
+    <meta name="description"
+        content="Certificates and professional training completed by Rohit Hadlageri.">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="top">
+        <div class="wrap">
+
+            <a class="logo" href="index.html">
+                Rohit Hadlageri
+            </a>
+
+            <nav aria-label="Main Navigation">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="index.html#skills">
+                    Skills
+                </a>
+
+                <a href="index.html#experience">
+                    Experience
+                </a>
+
+                <a href="index.html#projects">
+                    Projects
+                </a>
+
+                <a href="index.html#education">
+                    Education
+                </a>
+
+                <a href="certificates.html" aria-current="page">
+                    Certificates
+                </a>
+
+                <a href="index.html#contact">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="wrap">
+
+        <!-- Page Title -->
+
+        <div class="title">
+
+            <h2>
+                Certificates
+            </h2>
+
+            <p>
+                Courses and programs I've completed
+            </p>
+
+        </div>
+
+
+        <!-- Certificate Cards -->
+
+        <section class="grid" id="certs">
+
+            <!-- Certificates will be added here using JavaScript -->
+
+        </section>
+
+
+        <!-- Message if there are no certificates -->
+
+        <p class="empty" id="none" hidden>
+            No certificates available yet.
+        </p>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © <span class="yr"></span> Rohit Hadlageri
+        ·
+        <a href="index.html">
+            Back to home
+        </a>
+
+    </footer>
+
+
+    <!-- ================= CERTIFICATE DATA ================= -->
+
+    <script>
+
+        /*
+        ==========================================================
+        ADD YOUR CERTIFICATES HERE
+        ==========================================================
+
+        image:
+        Put your certificate image inside an "assets" folder.
+
+        Example:
+        assets/mindmatrix-certificate.png
+
+        link:
+        Add the certificate verification URL if you have one.
+
+        If you don't have an image or verification link yet,
+        leave it as "".
+        ==========================================================
+        */
+
+        const CERTS = [
+
+            {
+                title: "Android App Development Using Gen-AI",
+                issuer: "Mind Matrix",
+                date: "2026",
+                image: "",
+                link: ""
+            },
+
+            {
+                title: "Full Stack Development Program",
+                issuer: "NxtWave",
+                date: "",
+                image: "",
+                link: ""
+            }
+
+        ];
+
+
+        /* ================= CREATE CERTIFICATE CARDS ================= */
+
+        const box = document.getElementById("certs");
+
+        CERTS.forEach(certificate => {
+
+            const card = document.createElement("article");
+
+            card.className = "card";
+
+
+            /* Certificate Title */
+
+            const title = document.createElement("h3");
+
+            title.textContent = certificate.title;
+
+            card.appendChild(title);
+
+
+            /* Issuer and Date */
+
+            const meta = document.createElement("p");
+
+            meta.className = "meta";
+
+            meta.textContent =
+                certificate.issuer +
+                (certificate.date
+                    ? " · " + certificate.date
+                    : "");
+
+            card.appendChild(meta);
+
+
+            /* Certificate Image */
+
+            if (certificate.image) {
+
+                const image = document.createElement("img");
+
+                image.src = certificate.image;
+
+                image.alt =
+                    "Certificate: " +
+                    certificate.title;
+
+                image.loading = "lazy";
+
+                image.style.width = "100%";
+                image.style.borderRadius = "10px";
+                image.style.marginTop = "15px";
+                image.style.border = "1px solid var(--line)";
+
+                card.appendChild(image);
+            }
+
+
+            /* Verification Link */
+
+            if (certificate.link) {
+
+                const link = document.createElement("a");
+
+                link.href = certificate.link;
+
+                link.target = "_blank";
+
+                link.rel = "noopener noreferrer";
+
+                link.textContent =
+                    "View / Verify Certificate";
+
+                link.style.display = "inline-block";
+
+                link.style.marginTop = "15px";
+
+                card.appendChild(link);
+            }
+
+
+            /* Add card to page */
+
+            box.appendChild(card);
+
+        });
+
+
+        /* ================= EMPTY STATE ================= */
+
+        if (CERTS.length === 0) {
+
+            document.getElementById("none").hidden = false;
+
+        }
+
+
+        /* ================= CURRENT YEAR ================= */
+
+        document
+            .querySelectorAll(".yr")
+            .forEach(element => {
+
+                element.textContent =
+                    new Date().getFullYear();
+
+            });
+
+    </script>
+
+</body>
+
+</html>
